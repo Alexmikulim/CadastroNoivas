@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/recursos/template/template.xhtml">
+
+	<ui:define name="tituloPrincipal">Cadastro de Noivos</ui:define>
+	<ui:define name="tituloSecundario">Realize seu cadastro</ui:define>
+	
+	
+	<ui:define name="botoesAcao">
+		<p:commandButton value="Salvar" action="#{clienteNoivosBean.cadastrarCliente()}" update="@form" />
+		<p:button value="Listar" href="clienteNoivosFacelets.jsf" update="@form"/>
+	</ui:define>
+	
+
+	<ui:define name="conteudo">
+
+		<p:panelGrid columns="3">
+
+			<p:outputLabel for="n1" value="Nome dos Noivos: " />
+			<p:inputText id="n1" value="#{clienteNoivosBean.cliente.noivos}" />
+			<p:message for="n1" />
+
+			<p:outputLabel for="n2" value="Local do Evento: " />
+			<p:inputText id="n2" value="#{clienteNoivosBean.cliente.salao}" />
+			<p:message for="n2" />
+
+			<p:outputLabel for="n3" value="Local da Cerimonia: " />
+			<p:inputText id="n3"
+				value="#{clienteNoivosBean.cliente.localCerimonia}" />
+			<p:message for="n3" />
+
+			<p:outputLabel for="n4" value="Data e Hora: " />
+			<p:calendar locale="pt" pattern="dd/MM/yyyy HH:mm:ss" timeZone="GMT-03:00" id="n4"
+				value="#{clienteNoivosBean.cliente.data}" />
+			<p:message for="n4" />
+
+			<p:outputLabel for="n5" value="Telefone: " />
+			<p:inputMask mask="(99)99999-9999" id="n5"
+				value="#{clienteNoivosBean.cliente.telefone}" />
+			<p:message for="n5" />
+
+			<p:outputLabel for="n6" value="Numero de Convidados: " />
+			<p:inputMask mask="999" id="n6"
+				value="#{clienteNoivosBean.cliente.numeroDeConvidados}" />
+			<p:message for="n6" />
+
+			<p:outputLabel for="n7" value="Tipo de Contratação: " />
+			<p:selectOneMenu id="n7"
+				value="#{clienteNoivosBean.cliente.tipoContratação}">
+				<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+				<f:selectItem itemValue="Acessoria" itemLabel="Acessoria" />
+				<f:selectItem itemValue="Cerimonialista" itemLabel="Cerimonialista" />
+				<f:selectItem itemValue="Organização do Evento"
+					itemLabel="Organização do Evento" />
+			</p:selectOneMenu>
+			<p:message for="n7" />
+
+
+			<p:outputLabel for="n8" value="Valor do Contrato: " />
+			<p:inputNumber thousandSeparator="." decimalSeparator=","
+				decimalPlaces="2" id="n8"
+				value="#{clienteNoivosBean.cliente.valorContrato}" />
+			<p:message for="n8" />
+
+			<p:outputLabel for="n9" value="valor Foi Pago : " />
+			<p:selectOneRadio id="n9"
+				value="#{clienteNoivosBean.cliente.valorPago}">
+				<f:selectItem itemLabel="Sim" itemValue="Sim" />
+				<f:selectItem itemLabel="Não" itemValue="Não" />
+			</p:selectOneRadio>
+			<p:message for="n9" />
+
+		</p:panelGrid>
+	</ui:define>
+
+</ui:composition>
+</html>

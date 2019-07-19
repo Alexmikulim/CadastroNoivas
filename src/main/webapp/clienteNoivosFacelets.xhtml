@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/recursos/template/template2.xhtml">
+	
+	<ui:define name="tituloPrincipal">Lista de Eventos</ui:define>
+	<ui:define name="tituloSecundario">Noivos cadastrados</ui:define>
+	
+	
+	<ui:define name="conteudo">
+	<p:dataTable value="#{clienteNoivosBean.listarClientenoivos()}" var="Noivos">
+	
+	<p:column headerText="Nome dos Noivos">
+	<h:outputText value="#{Noivos.noivos}" />
+	</p:column>
+	
+	<p:column headerText="Local do Evento">
+	<h:outputText value="#{Noivos.salao}" />
+	</p:column>
+	
+	<p:column headerText="Local da Cerimonia">
+	<h:outputText value="#{Noivos.localCerimonia}" />
+	</p:column>
+	
+	<p:column headerText="Data e Hora">
+	<h:outputText value="#{Noivos.data}" />
+	</p:column>
+	
+	<p:column headerText="telefone">
+	<h:outputText value="#{Noivos.telefone}" />
+	</p:column>
+	
+	<p:column headerText="Numero de Convidados">
+	<h:outputText value="#{Noivos.numeroDeConvidados}" />
+	</p:column>
+	
+	<p:column headerText="Tipo de Contratação">
+	<h:outputText value="#{Noivos.tipoContratação}" />
+	</p:column>
+	
+	<p:column headerText="Valor do contrato">
+	<h:outputText value="#{Noivos.valorContrato}" />
+	</p:column>
+	
+	<p:column headerText="Valor Pago">
+	<h:outputText value="#{Noivos.valorPago}" />
+	</p:column>
+	
+	<p:column headerText="Ação">
+	<p:commandButton value="Excluir" action="#{clienteNoivosBean.excluirCLiente(Noivos)}" update="@form"/>
+	
+	</p:column>
+	
+	</p:dataTable>
+	</ui:define>
+	
+	
+	</ui:composition>
+</html>
